@@ -1,4 +1,3 @@
-// [THÊM MỚI TOÀN BỘ FILE] Trang Tài khoản Khách hàng (Xem/sửa thông tin giao hàng & lịch sử đơn)
 import { useEffect, useState, type FormEvent } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import EmptyState from "../components/common/EmptyState";
@@ -16,7 +15,7 @@ export default function AccountPage() {
   const [address, setAddress] = useState(customer?.address ?? "");
   const [savedNotice, setSavedNotice] = useState(false);
 
-  // Tái sử dụng dữ liệu đơn hàng từ localStorage ('seoul-bite-orders') giống OrdersPage của nhóm
+  // Tái sử dụng dữ liệu đơn hàng giống OrdersPage của nhóm
   const [orders] = useState<Order[]>(() => {
     try {
       return JSON.parse(
@@ -35,7 +34,7 @@ export default function AccountPage() {
     }
   }, [customer]);
 
-  // Chặn truy cập nếu chưa đăng nhập tài khoản khách
+  // Chặn truy cập nếu chưa log tài khoản khách
   if (!isCustomerLoggedIn || !customer) {
     return <Navigate to="/login" replace />;
   }
@@ -143,7 +142,7 @@ export default function AccountPage() {
               </div>
             </div>
 
-            {/* Cột phải: Lịch sử đơn hàng đã đặt */}
+            {/* ls đơn hàng */}
             <div className="col-lg-7">
               <div className="bg-white border rounded-4 p-4 shadow-sm">
                 <div className="d-flex align-items-center justify-content-between mb-3">
@@ -151,7 +150,7 @@ export default function AccountPage() {
                     Lịch sử đơn hàng ({orders.length})
                   </h2>
                   <Link to="/orders" className="small text-decoration-none">
-                    Xem trang đơn hàng →
+                    Xem trang đơn hàng
                   </Link>
                 </div>
 

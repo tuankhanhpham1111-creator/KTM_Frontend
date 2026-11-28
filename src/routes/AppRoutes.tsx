@@ -1,5 +1,5 @@
 // [GIỮ NGUYÊN] Các import trang gốc của nhóm
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import MainLayout from "../components/layout/MainLayout";
 import HomePage from "../pages/HomePage";
 import MenuPage from "../pages/MenuPage";
@@ -35,7 +35,7 @@ function AppRoutes() {
         <Route path="account" element={<AccountPage />} />
 
         {/* [CẬP NHẬT] Giữ đường dẫn /admin/login cũ nhưng trỏ về LoginPage mới */}
-        <Route path="admin/login" element={<LoginPage />} />
+        <Route path="admin/login" element={<Navigate to="/login" replace />} />
 
         {/* [GIỮ NGUYÊN] Route 404 */}
         <Route path="*" element={<NotFoundPage />} />
